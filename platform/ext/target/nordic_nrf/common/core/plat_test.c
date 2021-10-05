@@ -40,7 +40,6 @@ static void timer_init(NRF_TIMER_Type * TIMER, uint32_t ticks)
     nrf_timer_bit_width_set(TIMER, NRF_TIMER_BIT_WIDTH_32);
     nrf_timer_frequency_set(TIMER, NRF_TIMER_FREQ_1MHz);
     nrf_timer_cc_set(TIMER, NRF_TIMER_CC_CHANNEL0, ticks);
-    nrf_timer_one_shot_enable(TIMER, NRF_TIMER_CC_CHANNEL0);
 }
 
 static void timer_stop(NRF_TIMER_Type * TIMER)
@@ -69,6 +68,18 @@ void tfm_plat_test_secure_timer_start(void)
 void tfm_plat_test_secure_timer_stop(void)
 {
     timer_stop(NRF_TIMER0);
+}
+
+void tfm_plat_test_secure_timer_clear_intr(void)
+{
+    nrf_timer_event_clear(NRF_TIMER0, NRF_TIMER_EVENT_COMPARE0);
+
+    /* Timer needs to be cleared as the framework assumes that the timer counts
+     * downwards and resets on an underflow when the interrupt is generated,
+     * but the NRF_TIMER counts upwards and therefore does not automatically
+     * reset when the interrupt is generated.
+     */
+    nrf_timer_task_trigger(NRF_TIMER0, NRF_TIMER_TASK_CLEAR);
 }
 
 void tfm_plat_test_non_secure_timer_start(void)
