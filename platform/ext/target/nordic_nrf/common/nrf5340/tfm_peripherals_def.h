@@ -211,15 +211,15 @@ extern struct platform_data_t tfm_peripheral_vmc;
 #define TFM_PERIPHERAL_STD_UART     TFM_PERIPHERAL_UARTE1
 
 #ifdef PSA_API_TEST_IPC
-#define FF_TEST_UART_IRQ         (EGU5_IRQn)
-#define FF_TEST_UART_IRQ_Handler (pal_interrupt_handler)
+#define FF_TEST_UART_IRQ         (TFM_UARTE1_IRQ)
+#define FF_TEST_UART_IRQ_Handler (SPIM1_SPIS1_TWIM1_TWIS1_UARTE1_IRQHandler)
 
 extern struct platform_data_t tfm_peripheral_FF_TEST_NVMEM_REGION;
 extern struct platform_data_t tfm_peripheral_FF_TEST_SERVER_PARTITION_MMIO;
 extern struct platform_data_t tfm_peripheral_FF_TEST_DRIVER_PARTITION_MMIO;
 
-#define FF_TEST_UART_REGION           (&tfm_peripheral_std_uart)
-#define FF_TEST_WATCHDOG_REGION       (&tfm_peripheral_timer0)
+#define FF_TEST_UART_REGION           (TFM_PERIPHERAL_UARTE1)
+#define FF_TEST_WATCHDOG_REGION       (TFM_PERIPHERAL_WDT0)
 #define FF_TEST_NVMEM_REGION          (&tfm_peripheral_FF_TEST_NVMEM_REGION)
 #define FF_TEST_SERVER_PARTITION_MMIO (&tfm_peripheral_FF_TEST_SERVER_PARTITION_MMIO)
 #define FF_TEST_DRIVER_PARTITION_MMIO (&tfm_peripheral_FF_TEST_DRIVER_PARTITION_MMIO)

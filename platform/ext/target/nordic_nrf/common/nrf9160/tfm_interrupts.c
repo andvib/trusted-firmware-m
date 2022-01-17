@@ -536,6 +536,6 @@ enum tfm_hal_status_t tfm_i20_irq_init(void *p_pt,
 #ifdef PSA_API_TEST_IPC
 enum tfm_hal_status_t ff_test_uart_irq_init(void *p_pt,
                                             struct irq_load_info_t *p_ildi)
-__attribute__((alias("tfm_egu5_irq_init")));
+__attribute__((alias("tfm_serial1_init")));
 
 #endif

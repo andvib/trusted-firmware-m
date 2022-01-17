@@ -21,8 +21,7 @@ extern "C" {
 #endif
 
 #ifdef PSA_API_TEST_IPC
-#define TFM_PERIPHERAL_EGU5_SECURE 1
-
+#define TFM_PERIPHERAL_UARTE1_SECURE 1
 #define TFM_PERIPHERAL_WDT0_SECURE 1
 #endif
 

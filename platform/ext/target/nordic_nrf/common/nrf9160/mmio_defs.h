@@ -166,6 +166,11 @@ const uintptr_t partition_named_mmio_list[] = {
 #if TFM_PERIPHERAL_GPIO0_SECURE
     (uintptr_t)TFM_PERIPHERAL_GPIO0,
 #endif
+#ifdef PSA_API_TEST_IPC
+    (uintptr_t)FF_TEST_NVMEM_REGION,
+    (uintptr_t)FF_TEST_DRIVER_PARTITION_MMIO,
+    (uintptr_t)FF_TEST_SERVER_PARTITION_MMIO,
+#endif
 };
 
 #ifdef __cplusplus
